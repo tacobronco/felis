@@ -1,13 +1,12 @@
 package net.mollrow.felis;
 
 /**
- * Hello world!
+ * Created with IntelliJ IDEA.
  *
+ * @author Logan Blackburn
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public class App {
+    public static void main(String... args) {
+
     }
 }
