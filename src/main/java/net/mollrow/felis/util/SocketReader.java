@@ -30,6 +30,13 @@ public class SocketReader extends Thread{
 	}
 
 	/**
+	 * Allow server to get a queue to interact with
+	 */
+	public Queue<String> getTarget() {
+		return target;
+	}
+
+	/**
 	 * Loop to run
 	 * Considerations: don't want to lock down other threads
 	 */
