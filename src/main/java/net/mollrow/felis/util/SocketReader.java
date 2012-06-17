@@ -1,8 +1,10 @@
 package net.mollrow.felis.util;
 
+import java.io.IOException;
 import java.net.Socket;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Scanner;
 
 /**
  * Created with IntelliJ IDEA.
@@ -41,6 +43,15 @@ public class SocketReader extends Thread{
 	 * Considerations: don't want to lock down other threads
 	 */
 	public void run() {
-
+		try {
+			Scanner in = new Scanner(source.getInputStream());
+			while(in.hasNextLine()) {
+				synchronized (this) {
+					target.add(in.nextLine());
+				}
+			}
+		} catch(IOException e) {
+			//todo: log4j error
+		}
 	}
 }

@@ -1,4 +1,4 @@
-package net.mollrow.felis.model;
+package net.mollrow.felis.irc;
 
 /**
  * Created with IntelliJ IDEA.

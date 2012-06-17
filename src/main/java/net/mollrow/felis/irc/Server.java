@@ -1,4 +1,4 @@
-package net.mollrow.felis.model;
+package net.mollrow.felis.irc;
 
 import net.mollrow.felis.FelisException;
 import net.mollrow.felis.util.SocketReader;

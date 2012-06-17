@@ -1,5 +1,8 @@
 package net.mollrow.felis.util;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -41,6 +44,26 @@ public class SocketWriter extends Thread{
 	 * Considerations: don't want to lock down other threads
 	 */
 	public void run() {
+		try {
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(target.getOutputStream()));
+			while(true) {
+				try {
+					Thread.sleep(10);
+				} catch(InterruptedException e) {
+					//todo: log interrupted
+				}
+				synchronized (this) {
+					if(source.isEmpty()) {
+						continue;
+					}
+					for(int i = 0;!source.isEmpty()&&i<5;i++) {
+						writer.write(source.remove());
+					}
+				}
+			}
+		} catch(IOException e) {
+			//todo: log4j logging
+		}
 
 	}
 }
